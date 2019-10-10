@@ -1,7 +1,5 @@
 let moment = require('moment')
 
-let _tick
-
 function formatTime(time) {
     if (time >= 0 && time < 10) return `0${time}`
     if (time > -10 && time < 0) return `-0${Math.abs(time)}`
@@ -39,13 +37,13 @@ class DurationClock {
     }
 
     start() {
-        _tick = setInterval(() => {
+        this._tick = setInterval(() => {
             if (this.onTick) this.onTick(this.formattedTime)
         }, 1000)
     }
 
     stop() {
-        clearInterval(_tick)
+        clearInterval(this._tick)
     }
 
 }
